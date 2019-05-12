@@ -1,21 +1,44 @@
 <!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8' />
+    <link href='fullcalendar/core/main.css' rel='stylesheet' />
+    <link href='fullcalendar/daygrid/main.css' rel='stylesheet' />
 
-<html>
+    <script src='fullcalendar/core/main.js'></script>
+    <script src='fullcalendar/daygrid/main.js'></script>
+    <script src='fullcalendar/google-calendar/main.js'></script>
 
-<div class="content">
-    <head>
-        <title>Tapahtumakalenteri</title>
-        <link rel="stylesheet" href="/css/styles.css">
-    </head>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script>
 
-    <body>
-        <div class="main-content">
-            {{>header}}
-            <iframe src={{calendar_url}} style="border: 0" width="620" height="600" frameborder="0" scrolling="no"></iframe>
-        </div>
-        
-        {{>footer}}
-    </body>
-</div>
+      document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
 
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+          plugins: [ 'dayGrid' ],
+          eventSources: [
+            {
+              url:  '/calendar/data.json',
+              color: 'purple'
+            }
+          ]
+        });
+
+        calendar.render();
+      });
+
+    </script>
+  </head>
+  <body>
+  <div class="content">
+    <div class="main-content">
+      {{>header}}
+      <p>kalenteri perkele</p>
+      <div id='calendar'></div>
+    </div>
+
+		{{>footer}}
+  </div>
+  </body>
 </html>

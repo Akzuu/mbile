@@ -6,7 +6,6 @@ const hbs = require('hbs')
 const calendarRouter = require('./routers/calendar')
 const moviesRouter = require('./routers/movies')
 
-
 const app = express()
 const port = process.env.PORT
 
@@ -19,8 +18,7 @@ const partialsPath = path.join(__dirname, '../templates/partials')
 
 // Setup static directory to serve
 app.use(express.static(publicDirectoryPath))
-
-
+app.use('/fullcalendar', express.static(__dirname + '/../node_modules/@fullcalendar/'));
 
 app.set('view engine', 'hbs')
 app.set('views', viewsPath)
