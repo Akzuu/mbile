@@ -12,6 +12,15 @@ body {
   background-image: url("/img/background.jpg");
 }
 
+.content {
+	background-color: #fcdc76ee;
+	padding: 0 16px; 
+
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
 footer {
 	color: #888888;
 	border-top: 1px solid #eeeeee;
