@@ -19,10 +19,9 @@ router.get('/calendar/data.json', async (req, res) => {
             if (error) {
                 throw new Error(error)
             }
-            console.log(typeof data)
-            parsedData = parsePOPData((data))
+            parsedData = parsePOPData(data)
             res.setHeader('content-type', 'application/json')
-            res.send(JSON.stringify(parsedData))
+            res.send(parsedData)
         })
     } catch(e) {
         res.send(500).send(e)
