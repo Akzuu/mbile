@@ -10,21 +10,31 @@ router.get('/calendar', async (req, res) => {
     })
 })
 
+// milliseconds between calendar updates
+// 86400000 = 1 day
+const calendar_cache_duration = 86400000
+var pop_calendar_data = null
+var pop_calendar_updated = null
 // This is not currently used, but has future potential for
 // API solutions
 router.get('/calendar/data.json', async (req, res) => {
     const url = process.env.POP_CALENDAR
-    try {
+    
+    if(pop_calendar_data 
+      && new Date().getTime() < pop_calendar_updated+calendar_cache_duration){
+      res.json(pop_calendar_data)
+    } else try {
         await ical.fromURL(url,{}, (error, data) => {
             if (error) {
                 throw new Error(error)
             }
-            parsedData = parsePOPData(data)
-            res.setHeader('content-type', 'application/json')
-            res.send(parsedData)
+            pop_calendar_data = parsePOPData(data)
+            pop_calendar_updated = new Date().getTime()
+            res.json(pop_calendar_data)
         })
     } catch(e) {
-        res.send(500).send(e)
+        console.log(e)
+        res.status(500).send(e)
     }
 })
 
