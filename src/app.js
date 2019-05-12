@@ -4,6 +4,7 @@ const hbs = require('hbs')
 
 // Import routers
 const calendarRouter = require('./routers/calendar')
+const moviesRouter = require('./routers/movies')
 
 
 const app = express()
@@ -35,6 +36,7 @@ app.get('', (req, res) => {
 
 // Use routers
 app.use(calendarRouter)
+app.use(moviesRouter)
 
 
 // 404 not found when page doesn't exist
