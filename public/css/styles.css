@@ -9,11 +9,11 @@ body {
 	flex-direction: column;
 	min-height: 100vh;
   
-  background-image: url("/img/background.jpg");
+  background-image: url("/img/background-alt.jpg");
 }
 
 .content {
-	background-color: #fcdc76ee;
+	background-color:rgba(240, 87, 32, 0.753);
 	padding: 0 16px; 
 
 	display: flex;
@@ -22,7 +22,7 @@ body {
 }
 
 footer {
-	color: #888888;
+	color: #acacac;
 	border-top: 1px solid #eeeeee;
 	margin-top: 16px;
 	padding: 16px 0;
@@ -39,7 +39,7 @@ h1 {
 }
 
 header a {
-	color: #888888;
+	color: #acacac;
 	margin-right: 16px;
 	text-decoration: none;
 }
@@ -50,6 +50,7 @@ header a {
 
 .main-content {
 	flex-grow: 1;
+	text-align: center;
 }
 
 input {
