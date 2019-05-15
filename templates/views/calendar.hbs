@@ -1,21 +1,58 @@
 <!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8' />
+    <link href='fullcalendar/core/main.css' rel='stylesheet' />
+    <link href='fullcalendar/daygrid/main.css' rel='stylesheet' />
+    <link href='fullcalendar/list/main.css' rel='stylesheet' />
 
-<html>
+    <script src='fullcalendar/core/main.js'></script>
+    <script src='fullcalendar/daygrid/main.js'></script>
+    <script src='fullcalendar/list/main.js'></script>
 
-<div class="content">
-    <head>
-        <title>Tapahtumakalenteri</title>
-        <link rel="stylesheet" href="/css/styles.css">
-    </head>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script>
+      
+      function onEventClick(info){
+        alert(info.event.title+"\n\n"+info.event.extendedProps.description)
+      }
+      
+      document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
 
-    <body>
-        <div class="main-content">
-            {{>header}}
-            <iframe src={{calendar_url}} style="border: 0" width="620" height="600" frameborder="0" scrolling="no"></iframe>
-        </div>
-        
-        {{>footer}}
-    </body>
-</div>
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+          plugins: [ 'dayGrid' ],
+          defaultView: 'dayGridMonth',
+          header: {
+            left:   'prev,next',
+            center: 'title',
+            right:  'dayGridMonth,dayGridWeek,listWeek today'
+          },
+          weekNumbers: true,
+          weekNumberCalculation: "ISO",
+          eventSources: [
+            {
+              url:  '/calendar/data.json',
+              color: 'purple'
+            }
+          ],
+          eventClick: onEventClick
+        });
 
+        calendar.render();
+      });
+
+    </script>
+  </head>
+  <body>
+  <div class="content">
+    <div class="main-content">
+      {{>header}}
+      <p>kalenteri perkele</p>
+      <div id='calendar'></div>
+    </div>
+
+		{{>footer}}
+  </div>
+  </body>
 </html>
