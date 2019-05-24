@@ -65,3 +65,20 @@ button {
 	color: white;
 	padding: 8px;
 }
+
+.logo {
+  border: 0.3em solid lightgrey;
+  border-radius: 0.1em;
+  margin: 1em;
+  padding: 1em;
+}
+
+.logo img {
+  max-width: 100%;
+  height: auto;
+  calc(650px - 4 * 16px - 2 * 0.3em);
+}
+
+.logo h2 {
+  margin: 0.5em 0 0 0;
+}

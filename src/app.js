@@ -34,6 +34,12 @@ app.get('', (req, res) => {
 	})
 })
 
+app.get('/logokilpailu', (req, res) => {
+  res.render('logokilpailu', {
+    title: 'mbile logokilpailu'
+  })
+})
+
 // Use routers
 app.use(calendarRouter)
 app.use(moviesRouter)
